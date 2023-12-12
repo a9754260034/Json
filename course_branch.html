@@ -1,0 +1,53 @@
+<%-- 
+    Document   : newjsp
+    Created on : 12-Dec-2023, 10:11:41 am
+    Author     : user4
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <script>
+           const course=['--Select--','B.Tech','M.Tech','Diploma','MCA'];   
+           const b_tech=['--Select--','Computer Science & Engineering','Information technology','CSE-Artificial Inteligance & Machine Learning'];
+           const m_tech=['--Select--','Software Engineering','Power Electronics'];
+           function body_onload(){     
+               option_html="";
+                for(var key in course) {
+                    option_html += "<option value='" + course[key]  + "'>" +course[key] + "</option>"
+                }
+                    document.getElementById("course").innerHTML = option_html;
+            }
+            function dist_load(){
+                var course=document.getElementById("course").value;
+                if(course=='B.Tech'){
+                    option_html="";
+                    for(var key in b_tech) {
+                        option_html += "<option value='" + b_tech[key]  + "'>" +b_tech[key] + "</option>"
+                    }
+                    document.getElementById("branch").innerHTML = option_html;
+                }else if(course=='M.Tech'){
+                    option_html="";
+                    for(var key in m_tech) {
+                        option_html += "<option value='" + m_tech[key]  + "'>" +m_tech[key] + "</option>"
+                    }
+                    document.getElementById("branch").innerHTML = option_html;
+                }else{
+                    document.getElementById("branch").innerHTML = "";
+                }
+            }
+        </script>
+
+    </head>
+    <body onload="body_onload()">        
+        <h1>Hello World!</h1>
+        Course : <select id="course" name="course" onchange="dist_load()">            
+        </select>
+        Branch : <select id="branch" name="branch">
+        </select>
+        
+    </body>
+</html>
