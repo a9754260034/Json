@@ -1,0 +1,54 @@
+<%-- 
+    Document   : newjsp
+    Created on : 12-Dec-2023, 10:11:41 am
+    Author     : user4
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <script>
+           const states=['--Select--','Madhya Pradesh','Uttar Pradesh','Maharastra'];   
+           const madhya_pradesh=['--Select--','Khargone','Indore'];
+           const uttar_pradesh=['--Select--','Kanpur','Noida'];
+           function body_onload(){     
+               option_html="";
+                for(var key in states) {
+                    option_html += "<option value='" + states[key]  + "'>" +states[key] + "</option>"
+                }
+                    document.getElementById("states").innerHTML = option_html;
+            }
+            function dist_load(){
+                var state=document.getElementById("states").value;
+                if(state=='Madhya Pradesh'){
+                    option_html="";
+                    for(var key in madhya_pradesh) {
+                        option_html += "<option value='" + madhya_pradesh[key]  + "'>" +madhya_pradesh[key] + "</option>"
+                    }
+                    document.getElementById("districts").innerHTML = option_html;
+                }else if(state=='Uttar Pradesh'){
+                    option_html="";
+                    for(var key in uttar_pradesh) {
+                        option_html += "<option value='" + uttar_pradesh[key]  + "'>" +uttar_pradesh[key] + "</option>"
+                    }
+                    document.getElementById("districts").innerHTML = option_html;
+                }else{
+                    document.getElementById("districts").innerHTML = "";
+                }
+            }
+        </script>
+
+    </head>
+    <body onload="body_onload()">        
+        <h1>Hello World!</h1>
+        <select id="states" name="states" onchange="dist_load()">            
+        </select>
+        <select id="districts" name="districts">
+            <option>--Select--</option>
+        </select>
+        
+    </body>
+</html>
